@@ -17,15 +17,15 @@ st.title("🎵 Taylor Swift Music Recommender")
 st.write("Discover similar songs from Taylor Swift's discography using audio features & KMeans clustering.")
 
 # Song selection
-song_list = df['track_name'].unique()
+song_list = df['name'].unique()
 selected_song = st.selectbox("Choose a Taylor Swift song:", sorted(song_list))
 
 # Get features of the selected song
-selected_song_data = df[df['track_name'] == selected_song].iloc[0]
-selected_features = selected_song_data.drop(['track_name', 'artist', 'cluster'])
+selected_song_data = df[df['name'] == selected_song].iloc[0]
+selected_features = selected_song_data.drop(['name', 'cluster'])
 
 # Compute similarity
-feature_columns = df.columns.difference(['track_name', 'artist', 'cluster'])
+feature_columns = df.columns.difference(['name', 'cluster'])
 similarities = cosine_similarity([selected_features], df[feature_columns])[0]
 
 # Add similarity scores
@@ -35,6 +35,6 @@ recommendations = df[df['name'] != selected_song].sort_values(by='similarity', a
 # Display results
 st.subheader("🎧 Songs You Might Like:")
 for idx, row in recommendations.iterrows():
-    st.write(f"**{row['track_name']}** by {row['artist']} — Similarity: {row['similarity']:.2f}")
+    st.write(f"**{row['track_name']} — Similarity: {row['similarity']:.2f}")
 
 
