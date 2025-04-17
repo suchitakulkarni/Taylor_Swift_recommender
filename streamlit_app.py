@@ -30,7 +30,7 @@ similarities = cosine_similarity([selected_features], df[feature_columns])[0]
 
 # Add similarity scores
 df['similarity'] = similarities
-recommendations = df[df['track_name'] != selected_song].sort_values(by='similarity', ascending=False).head(5)
+recommendations = df[df['name'] != selected_song].sort_values(by='similarity', ascending=False).head(5)
 
 # Display results
 st.subheader("🎧 Songs You Might Like:")
