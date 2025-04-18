@@ -19,7 +19,7 @@ st.title("🎵 Taylor Swift Music Recommender")
 st.write("Discover similar songs from Taylor Swift's discography using audio features & KMeans clustering.")
 
 # Song selection
-song_list = df['name'].unique()
+song_list = df['name']#.unique()
 selected_song = st.selectbox("Choose a Taylor Swift song:", sorted(song_list))
 
 # Get features of the selected song
