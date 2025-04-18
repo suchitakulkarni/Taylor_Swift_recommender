@@ -41,11 +41,11 @@ selected_song_data = df[df['name'] == selected_song].iloc[0]
 member_index = selected_song_data
 print(member_index)
 
-cluster_id = df.loc[member_index, 'labels']
-same_cluster_data = df[df['labels'] == cluster_id]
+cluster_id = df.loc[member_index, 'cluster']
+same_cluster_data = df[df['cluster'] == cluster_id]
 
 if len(same_cluster_data) < 11:
-    suggestions = list(df[df['labels'] == cluster_id]['name'])
+    suggestions = list(df[df['cluster'] == cluster_id]['name'])
 else:
     numeric_cols = same_cluster_data.select_dtypes(include = ['number']).columns
     numeric_vals = same_cluster_data.select_dtypes(include = ['number']).values
