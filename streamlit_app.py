@@ -38,7 +38,7 @@ with col1:
 
     # Plot output
     fig1, ax1 = plt.subplots(figsize=(4, 4))
-    sns.histplot(df[selected_feature], kde=True, bins = bins, color='mediumpurple', ax=ax)
+    sns.histplot(df[selected_feature], kde=True, bins = bins, color='mediumpurple', ax=ax1)
     ax1.set_title(f"Distribution of {selected_feature}")
     st.pyplot(fig1)
 
