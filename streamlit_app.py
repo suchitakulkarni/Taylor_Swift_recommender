@@ -67,7 +67,7 @@ st.subheader("🎧 Songs You Might Like:")
 #st.write(df.head())
 for i in range(len(suggestion_list)):
 #    st.write(f"**{row['name']} — Similarity: {row['similarity']:.2f}")
-    st.write(f"**{suggestion_list[i][0]}\t{suggestion_list[i][1]}")
+    st.write(f"**{suggestion_list[i][0]} from album ({suggestion_list[i][1]})")
     
     
 
