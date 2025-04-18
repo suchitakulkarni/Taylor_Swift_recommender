@@ -28,7 +28,7 @@ selected_feature = st.selectbox(
 )
 
 # Plot output
-fig, ax = plt.subplots(figsize=(8, 4))
+fig, ax = plt.subplots(figsize=(4, 4))
 sns.histplot(df[selected_feature], kde=True, color='mediumpurple', ax=ax)
 ax.set_title(f"Distribution of {selected_feature}")
 st.pyplot(fig)
