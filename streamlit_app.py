@@ -57,10 +57,10 @@ else:
     # Display or save the results
     recommendations = nearest_members['name'].tolist()
     
-suggestion_list  =[]
-for song in recommendations:
-    if song == selected_song: continue
-    suggestion_list.append([song, list(df[df['name'] == song]['album'])[0]])
+#suggestion_list  =[]
+#for song in recommendations:
+#    if song == selected_song: continue
+#    suggestion_list.append([song, list(df[df['name'] == song]['album'])[0]])
 
 # Display results
 st.subheader("🎧 Songs You Might Like:")
