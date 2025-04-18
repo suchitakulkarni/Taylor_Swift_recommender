@@ -38,8 +38,7 @@ selected_song_data = df[df['name'] == selected_song].iloc[0]
 #recommendations = df[df['name'] != selected_song].sort_values(by='similarity', ascending=False).head(5)
 
 #member_index = df.index[df['name'] == selected_song].tolist()[0]
-member_index = selected_song_data
-print(member_index)
+member_index = df.index[df['name'] == selected_song].tolist()[0]
 
 cluster_id = df.loc[member_index, 'cluster']
 same_cluster_data = df[df['cluster'] == cluster_id]
