@@ -21,6 +21,11 @@ st.title("🎵 Taylor Swift Music Recommender")
 st.write("Discover similar songs from Taylor Swift's discography using audio features & KMeans clustering.")
 
 st.subheader("🎶 Feature Distribution Explorer")
+# Dropdown like ipywidgets interact
+selected_feature = st.selectbox(
+    "Select a feature to visualize:",
+    df.select_dtypes('number').columns
+)
 
 # Plot output
 fig, ax = plt.subplots(figsize=(8, 4))
@@ -28,11 +33,7 @@ sns.histplot(df[selected_feature], kde=True, color='mediumpurple', ax=ax)
 ax.set_title(f"Distribution of {selected_feature}")
 st.pyplot(fig)
 
-# Dropdown like ipywidgets interact
-selected_feature = st.selectbox(
-    "Select a feature to visualize:",
-    df.select_dtypes('number').columns
-)
+
 
 # Song selection
 song_list = df['name']#.unique()
