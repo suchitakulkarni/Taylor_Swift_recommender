@@ -9,6 +9,8 @@ import matplotlib.pyplot as plt
 
 from sklearn.metrics.pairwise import euclidean_distances
 
+st.set_page_config(layout="wide")  # Use full-width layout
+
 # Load data
 @st.cache_data
 def load_data():
@@ -20,21 +22,34 @@ df = load_data()
 st.title("🎵 Taylor Swift Music Recommender")
 st.write("Discover similar songs from Taylor Swift's discography using audio features & KMeans clustering.")
 
-st.subheader("🎶 Feature Distribution Explorer")
-# Dropdown like ipywidgets interact
-selected_feature = st.selectbox(
-    "Select a feature to visualize:",
-    df.select_dtypes('number').columns
-)
-bins = st.slider("Number of bins:", min_value=5, max_value=100, value=30)
+# Divide page into two columns
+col1, col2 = st.columns(2)
 
-# Plot output
-fig, ax = plt.subplots(figsize=(4, 4))
-sns.histplot(df[selected_feature], kde=True, bins = bins, color='mediumpurple', ax=ax)
-ax.set_title(f"Distribution of {selected_feature}")
-st.pyplot(fig)
+# === HISTOGRAM COLUMN ===
+with col1:
+
+    st.subheader("🎶 Feature Distribution Explorer")
+    # Dropdown like ipywidgets interact
+    selected_feature = st.selectbox(
+        "Select a feature to visualize:",
+        df.select_dtypes('number').columns
+    )
+    bins = st.slider("Number of bins:", min_value=5, max_value=100, value=30)
+
+    # Plot output
+    fig, ax = plt.subplots(figsize=(4, 4))
+    sns.histplot(df[selected_feature], kde=True, bins = bins, color='mediumpurple', ax=ax)
+    ax.set_title(f"Distribution of {selected_feature}")
+    st.pyplot(fig1)
 
 
+# ===  CORRELATION COLUMN ===
+with col2:
+    st.subheader("📈 Correlation Heatmap")
+    fig2, ax2 = plt.subplots(figsize=(6, 4))
+    sns.heatmap(df.select_dtypes('number').corr(), annot=True, cmap="coolwarm", ax=ax2)
+    ax2.set_title("Feature Correlations")
+    st.pyplot(fig2)
 
 # Song selection
 song_list = df['name']#.unique()
