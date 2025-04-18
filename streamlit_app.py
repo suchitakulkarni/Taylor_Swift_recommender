@@ -65,9 +65,9 @@ for song in recommendations:
 # Display results
 st.subheader("🎧 Songs You Might Like:")
 st.write(df['album'])
-for i in len(suggestion_list):
-    #st.write(f"**{row['name']} — Similarity: {row['similarity']:.2f}")
-    st.write(f"**suggestion_list[i]")
+#for i in len(suggestion_list):
+#    st.write(f"**{row['name']} — Similarity: {row['similarity']:.2f}")
+#    st.write(f"**suggestion_list[i]")
     
     
 
