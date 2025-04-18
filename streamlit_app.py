@@ -13,9 +13,6 @@ def load_data():
     df = pd.read_csv('songs.csv')  # columns: 'track_name', 'artist', 'cluster', feature1, feature2, ...
     return df
     
-
-
-
 df = load_data()
 
 st.title("🎵 Taylor Swift Music Recommender")
@@ -59,12 +56,17 @@ else:
 
     # Display or save the results
     recommendations = nearest_members['name'].tolist()
-        
+    
+for song in recommendations:
+    if song == selected_song: continue
+    suggestion_list.append([song, list(df[df['name'] == song]['album'])[0]])
 
 # Display results
 st.subheader("🎧 Songs You Might Like:")
-for row in recommendations:
+for i in len(suggestion_list):
     #st.write(f"**{row['name']} — Similarity: {row['similarity']:.2f}")
-    st.write(f"**{row}")
+    st.write(f"**suggestion_list[i]")
+    
+    
 
 
