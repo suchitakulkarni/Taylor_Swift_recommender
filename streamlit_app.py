@@ -8,7 +8,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.metrics.pairwise import euclidean_distances
 
 def get_suggestions(df, selected_song):
-    member_index = df.index[filtered_df['name'] == selected_song].tolist()[0]
+    member_index = df.index[df['name'] == selected_song].tolist()[0]
 
     cluster_id = df.loc[member_index, 'labels']
     same_cluster_data = df[df['labels'] == cluster_id]
