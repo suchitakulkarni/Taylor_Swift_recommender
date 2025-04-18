@@ -5,6 +5,32 @@ import pandas as pd
 import numpy as np
 from sklearn.metrics.pairwise import cosine_similarity
 
+from sklearn.metrics.pairwise import euclidean_distances
+
+def get_suggestions(df, selected_song):
+    member_index = df.index[filtered_df['name'] == selected_song].tolist()[0]
+
+    cluster_id = df.loc[member_index, 'labels']
+    same_cluster_data = df[df['labels'] == cluster_id]
+
+    if len(same_cluster_data) < 11:
+        suggestions = list(df[df['labels'] == cluster_id]['name'])
+    else:
+        numeric_cols = same_cluster_data.select_dtypes(include = ['number']).columns
+        numeric_vals = same_cluster_data.select_dtypes(include = ['number']).values
+
+        # Compute distances between the selected member and others
+        selected_member_data = numeric_vals[same_cluster_data.index.get_loc(member_index)].reshape(1, -1)
+        distances = euclidean_distances(selected_member_data, numeric_vals).flatten()
+
+        nearest_indices = np.argsort(distances)[1:11]
+
+        nearest_members = same_cluster_data.iloc[nearest_indices]
+
+        # Display or save the results
+        suggestions = nearest_members['name'].tolist()
+    return suggestions
+
 # Load data
 @st.cache_data
 def load_data():
@@ -30,11 +56,14 @@ similarities = cosine_similarity([selected_features], df[feature_columns])[0]
 
 # Add similarity scores
 df['similarity'] = similarities
-recommendations = df[df['name'] != selected_song].sort_values(by='similarity', ascending=False).head(5)
+#recommendations = df[df['name'] != selected_song].sort_values(by='similarity', ascending=False).head(5)
+
+recommendations = get_suggestions(selected_song)
 
 # Display results
 st.subheader("🎧 Songs You Might Like:")
 for idx, row in recommendations.iterrows():
-    st.write(f"**{row['name']} — Similarity: {row['similarity']:.2f}")
+    #st.write(f"**{row['name']} — Similarity: {row['similarity']:.2f}")
+    st.write(f"**{row['name']}")
 
 
