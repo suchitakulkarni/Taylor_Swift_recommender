@@ -63,8 +63,8 @@ else:
 
 # Display results
 st.subheader("🎧 Songs You Might Like:")
-for idx, row in recommendations.iterrows():
+for row in recommendations:
     #st.write(f"**{row['name']} — Similarity: {row['similarity']:.2f}")
-    st.write(f"**{row['name']}")
+    st.write(f"**{row}")
 
 
