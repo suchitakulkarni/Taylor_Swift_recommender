@@ -104,13 +104,16 @@ with col2:
     critdict={'violinplot':criteria2,'barplot':criteria}
     #st.subheader("📈 Correlation Heatmap")
     st.subheader("📈 Features per album")
-    selected_plt_type = st.selectbox(
-        "Select plot type for plot:",
-        ("barplot", "violinplot"), key = 2
-    )
-    selected_feature_per_album = st.selectbox(
-        "Select a feature to visualize:", critdict.get(selected_plt_type), key = 3
+    col1_left, col1_right = st.columns(2)
+    with col1_left:
+        selected_plt_type = st.selectbox(
+            "Select plot type for plot:",
+            ("barplot", "violinplot"), key = 2
         )
+    with col1_right:
+        selected_feature_per_album = st.selectbox(
+            "Select a feature to visualize:", critdict.get(selected_plt_type), key = 3
+            )
     
     fig2, ax2 = plt.subplots(figsize=(5, 3))
     if selected_plt_type == 'barplot': draw_barplot(df_album_summary, selected_feature_per_album)
