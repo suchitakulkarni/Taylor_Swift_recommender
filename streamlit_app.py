@@ -48,7 +48,7 @@ st.title("🎵 Taylor Swift Discography analyzer and Music Recommender")
 st.write("Discover features of Taylor's discography and find similar songs from using audio features & KMeans clustering.")
 
 # Divide page into two columns
-col1, col2 = st.columns(2)
+col1, col2 = st.columns(3)
 
 # === HISTOGRAM COLUMN ===
 with col1:
@@ -95,6 +95,7 @@ with col2:
     ax1.set_title(f"Distribution of {selected_feature} across all albums")
     st.pyplot(fig1)
     
+with col3:
     #st.divider()
     st.markdown("###")
     criteria = ['size', 'total_duration_ms', 'speechiness', 'loudness','popularity']
@@ -124,7 +125,7 @@ with col2:
     st.pyplot(fig2)
 
 # Song selection
-st.subheader("Depending on your test, we can recommend you more of Taylor's songs")
+st.subheader("Depending on your taste, we can recommend you more of Taylor's songs")
 song_list = df['name']#.unique()
 selected_song = st.selectbox("Choose a Taylor Swift song:", sorted(song_list), key = 4)
 
