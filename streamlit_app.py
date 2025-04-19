@@ -52,8 +52,9 @@ with st.expander("Dataset"):
     st.dataframe(df_album_summary)
     st.write("Number of Albums analysed:", len(df['album'].unique().tolist()))
     st.write("Number of Songs analysed:", len(df['name'].tolist()))
-    for album in df['album'].unique().tolist():
-        st.write("Number of songs per album:", album, len(df[df['album'] == album].tolist()))
+    for album in df['album'].unique().tolist():st.write("Number of songs per album:", album)
+    #for album in df['album'].unique().tolist():
+    #    st.write("Number of songs per album:", album, len(df[df['album'] == album].tolist()))
 
 # Divide page into two columns
 
