@@ -13,11 +13,36 @@ st.set_page_config(layout="wide")  # Use full-width layout
 
 # Load data
 @st.cache_data
-def load_data():
-    df = pd.read_csv('songs.csv')  # columns: 'track_name', 'artist', 'cluster', feature1, feature2, ...
+def load_data(filename):
+    df = pd.read_csv(filename)  # columns: 'track_name', 'artist', 'cluster', feature1, feature2, ...
     return df
     
-df = load_data()
+def draw_barplot(df, variable):
+    temp_df = pd.DataFrame()
+    temp_df['album'] = album_summary['album'].astype(str)
+    temp_df['size'] = album_summary['size']
+    temp_df['total_duration_ms'] = album_summary['total_duration_ms']
+    temp_df['speechiness'] = abs(album_summary['speechiness_min']-album_summary['speechiness_max'])
+    temp_df['loudness'] = abs(album_summary['loudness_min'])-abs(album_summary['loudness_max'])
+    temp_df['popularity'] = album_summary['mean_popularity']
+    temp_df = temp_df.sort_values(by=variable, ascending=False)
+    p=sns.barplot(data=temp_df, y='album', x=variable)#, palette="Blues")
+    p.set(ylabel=None)
+    return 0
+
+def draw_violin(df, variable):
+    sns.set_theme(rc={'figure.figsize':(10,6)}, style = 'white')
+    filtered_df = df.sort_values(by=variable, ascending=False)
+    p=sns.violinplot(data = filtered_df, y=variable, x='album', palette="Blues")#, palette=color_palette)
+    p.set_xticks(p.get_xticks());
+    p.set_xticklabels(p.get_xticklabels(), rotation=90)
+    if variable == 'instrumentalness': plt.yscale('log')
+    if variable == 'speechiness': plt.yscale('log')
+    p.set(xlabel=None)
+    return 0
+    
+df = load_data('songs.csv')
+df_album_summary = load_data('album_summary.csv')
 
 st.title("🎵 Taylor Swift Music Recommender")
 st.write("Discover similar songs from Taylor Swift's discography using audio features & KMeans clustering.")
@@ -45,7 +70,19 @@ with col1:
 
 # ===  CORRELATION COLUMN ===
 with col2:
-    st.subheader("📈 Correlation Heatmap")
+    #st.subheader("📈 Correlation Heatmap")
+    st.subheader("📈 Album summaries")
+    selected_feature = st.selectbox(
+        "Select a feature to visualize:",
+        df_album_summary.select_dtypes('number').columns
+    )
+    selected_feature = st.selectbox(
+        "Select plot type for plot:",
+        ('acousticness', 'danceability', 'energy', 'instrumentalness',
+       'liveness', 'loudness', 'speechiness', 'tempo', 'valence', 'popularity',
+       'duration_ms')
+    )
+    
     fig2, ax2 = plt.subplots(figsize=(6, 4))
     sns.heatmap(df.select_dtypes('number').corr(), annot=True, cmap="coolwarm", ax=ax2)
     ax2.set_title("Feature Correlations")
