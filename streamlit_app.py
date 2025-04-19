@@ -70,7 +70,7 @@ with col1:
     temp_df = temp_df.sort_values(by=[selected_summary])
     ax0.barh(temp_df['album'],temp_df[selected_summary])#, color = 'xkcd:sky blue')
     ax0.set_yticks(range(len(list(temp_df['album']))), temp_df['album'], fontsize=12)#, color = 'xkcd:steel');
-    ax0.set_title("Taylor Swift albums with most {selected_summary}")
+    ax0.set_title(f"Taylor Swift albums with most {selected_summary}")
     st.pyplot(fig0)
 
 
