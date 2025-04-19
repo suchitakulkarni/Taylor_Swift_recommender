@@ -84,8 +84,8 @@ with col2:
     )
     
     fig2, ax2 = plt.subplots(figsize=(6, 4))
-    sns.heatmap(df.select_dtypes('number').corr(), annot=True, cmap="coolwarm", ax=ax2)
-    ax2.set_title("Feature Correlations")
+    #sns.heatmap(df.select_dtypes('number').corr(), annot=True, cmap="coolwarm", ax=ax2)
+    #ax2.set_title("Feature Correlations")
     st.pyplot(fig2)
 
 # Song selection
