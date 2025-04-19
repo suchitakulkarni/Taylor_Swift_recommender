@@ -108,7 +108,7 @@ with col3:
        'duration_ms']
     critdict={'violinplot':criteria2,'barplot':criteria}
     #st.subheader("📈 Correlation Heatmap")
-    st.text("📈 Features per album")
+    #st.text("📈 Features per album")
     col1_left, col1_right = st.columns(2)
     with col1_left:
         selected_plt_type = st.selectbox(
