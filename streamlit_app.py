@@ -48,7 +48,7 @@ st.title("🎵 Taylor Swift Discography analyzer and Music Recommender")
 st.write("Discover features of Taylor's discography and find similar songs from using audio features & KMeans clustering.")
 
 # Divide page into two columns
-col1, col2 = st.columns(3)
+col1, col2, col3 = st.columns(3)
 
 # === HISTOGRAM COLUMN ===
 with col1:
