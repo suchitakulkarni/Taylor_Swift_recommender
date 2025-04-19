@@ -52,8 +52,8 @@ col1, col2 = st.columns(2)
 
 # === HISTOGRAM COLUMN ===
 with col1:
-
-    st.subheader("🎶 Overall feature Distribution Explorer")
+    st.write('test column')
+    '''st.subheader("🎶 Overall feature Distribution Explorer")
     # Dropdown like ipywidgets interact
     selected_feature = st.selectbox(
         "Select a feature to visualize:",
@@ -65,7 +65,7 @@ with col1:
     fig1, ax1 = plt.subplots(figsize=(6, 4))
     sns.histplot(df[selected_feature], kde=True, bins = bins, color='mediumpurple', ax=ax1)
     ax1.set_title(f"Distribution of {selected_feature} across all albums")
-    st.pyplot(fig1)
+    st.pyplot(fig1)'''
 
 
 # ===  CORRELATION COLUMN ===
