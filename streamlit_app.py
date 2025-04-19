@@ -47,7 +47,7 @@ df_album_summary = load_data('album_summary.csv')
 st.title("🎵 Taylor Swift Discography analyzer and Music Recommender")
 st.write("Discover features of Taylor's discography and find similar songs from using audio features & KMeans clustering.")
 
-st.subheader("Dataset used and data summary")
+st.subheader("📈 Dataset used and data summary")
 with st.expander("Dataset"):
     st.subheader("Original data from spotify, further cleanned to remove duplicates")
     st.dataframe(df.drop(columns=['cluster']))
