@@ -50,7 +50,7 @@ st.write("Discover features of Taylor's discography and find similar songs from 
 with st.expander("Dataset"):
     st.subheader("Original data from spotify, further cleanned to remove duplicates")
     st.dataframe(df_album_summary)
-    st.write(len(df_album_summary['album'].tolist()))
+    st.write("Number of Albums analysed:" len(df_album_summary['album'].tolist()))
 
 # Divide page into two columns
 
