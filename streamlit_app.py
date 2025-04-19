@@ -101,7 +101,6 @@ with col2:
     critdict={'violinplot':criteria2,'barplot':criteria}
     #st.subheader("📈 Correlation Heatmap")
     st.subheader("📈 Features per album")
-    selected_plt_type = 'barplot'
     selected_plt_type = st.selectbox(
         "Select plot type for plot:",
         ("barplot", "violinplot")
