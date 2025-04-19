@@ -52,10 +52,11 @@ with st.expander("Dataset"):
     st.dataframe(df_album_summary)
     st.write("Number of Albums analysed:", len(df['album'].unique().tolist()))
     st.write("Number of Songs analysed:", len(df['name'].tolist()))
-    small_df = pd.dataframe(columns = ['album', 'number of songs'])
+    small_df = pd.DataFrame(columns = ['album', 'number of songs'])
     for i in range(len(df['album'].unique().tolist())):
         album = df['album'].unique().tolist()[i]
         small_df.loc[i] = [album, len(df[df['album'] == album]['name'].tolist())]
+    st.dataframe(small_df)
     
     #for album in df['album'].unique().tolist():
     #    st.write("Number of songs per album:", album, len(df[df['album'] == album]['name'].tolist()))
