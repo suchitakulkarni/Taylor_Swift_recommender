@@ -85,7 +85,7 @@ with col2:
     ax1.set_title(f"Distribution of {selected_feature} across all albums")
     st.pyplot(fig1)
     
-    st.divider()
+    #st.divider()
     st.markdown("###")
     criteria = ['size', 'total_duration_ms', 'speechiness', 'loudness','popularity']
     criteria2 = ['acousticness', 'danceability', 'energy', 'instrumentalness',
