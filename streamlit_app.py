@@ -94,7 +94,7 @@ with col2:
         bins = st.slider("Number of bins:", min_value=5, max_value=100, value=30)
 
     # Plot output
-    fig1, ax1 = plt.subplots(figsize=(5, 3))
+    fig1, ax1 = plt.subplots(figsize=(4, 2.4))
     sns.histplot(df[selected_feature], kde=True, bins = bins, color='mediumpurple', ax=ax1)
     ax1.set_title(f"Distribution of {selected_feature} across all albums")
     st.pyplot(fig1)
