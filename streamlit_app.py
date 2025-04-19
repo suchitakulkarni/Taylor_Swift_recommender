@@ -71,7 +71,6 @@ with col1:
 # ===  CORRELATION COLUMN ===
 with col2:
 
-
     st.subheader("🎶 Overall feature Distribution Explorer")
     # Dropdown like ipywidgets interact
     selected_feature = st.selectbox(
@@ -87,7 +86,7 @@ with col2:
     st.pyplot(fig1)
     
     
-    criteria = ['size', 'total_duration_ms', 'speechiness', 'loudness','popularity']
+    '''criteria = ['size', 'total_duration_ms', 'speechiness', 'loudness','popularity']
     criteria2 = ['acousticness', 'danceability', 'energy', 'instrumentalness',
        'liveness', 'loudness', 'speechiness', 'tempo', 'valence', 'popularity',
        'duration_ms']
@@ -109,7 +108,7 @@ with col2:
     #sns.heatmap(df.select_dtypes('number').corr(), annot=True, cmap="coolwarm", ax=ax2)
     #ax2.set_title("Feature Correlations")
     ax2.set_title(f"Distribution of {selected_feature} per album")
-    st.pyplot(fig2)
+    st.pyplot(fig2)'''
 
 # Song selection
 st.subheader("Depending on your test, we can recommend you more of Taylor's songs")
