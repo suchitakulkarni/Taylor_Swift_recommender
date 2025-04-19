@@ -101,7 +101,7 @@ with col2:
     
 with col3:
     #st.divider()
-    st.markdown("###")
+    #st.markdown("###")
     criteria = ['size', 'total_duration_ms', 'speechiness', 'loudness','popularity']
     criteria2 = ['acousticness', 'danceability', 'energy', 'instrumentalness',
        'liveness', 'loudness', 'speechiness', 'tempo', 'valence', 'popularity',
