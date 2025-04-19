@@ -51,6 +51,9 @@ with st.expander("Dataset"):
     st.subheader("Original data from spotify, further cleanned to remove duplicates")
     st.dataframe(df_album_summary)
     st.write("Number of Albums analysed:", len(df_album_summary['album'].tolist()))
+    st.write("Number of Songs analysed:", len(df_album_summary['name'].tolist()))
+    
+    st.write("Number of songs per album:", len(df_album_summary['album'].tolist()))
 
 # Divide page into two columns
 
