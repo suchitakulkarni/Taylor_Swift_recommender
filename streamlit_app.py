@@ -91,6 +91,7 @@ with col2:
     if selected_plt_type == 'violinplot': draw_violin(df, selected_feature)
     #sns.heatmap(df.select_dtypes('number').corr(), annot=True, cmap="coolwarm", ax=ax2)
     #ax2.set_title("Feature Correlations")
+    ax2.set_title(f"Distribution of {selected_feature} per album")
     st.pyplot(fig2)
 
 # Song selection
