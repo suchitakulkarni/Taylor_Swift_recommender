@@ -47,8 +47,10 @@ df_album_summary = load_data('album_summary.csv')
 st.title("🎵 Taylor Swift Discography analyzer and Music Recommender")
 st.write("Discover features of Taylor's discography and find similar songs from using audio features & KMeans clustering.")
 
-st.write("Let's look at the data summary")
-st.dataframe(df_album_summary)
+with st.expander("Dataset"):
+    st.write("Let's look at the data summary")
+    st.dataframe(df_album_summary)
+
 # Divide page into two columns
 
 col1_head, col2_head = st.columns(2)
