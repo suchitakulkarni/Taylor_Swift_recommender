@@ -48,14 +48,14 @@ st.title("🎵 Taylor Swift Discography analyzer and Music Recommender")
 st.write("Discover features of Taylor's discography and find similar songs from using audio features & KMeans clustering.")
 
 # Divide page into two columns
-col1, col2, col3 = st.columns(3)
+
 col1_head, col2_head = st.columns(2)
 with col1_head:
     st.subheader("🎶 Taylor's most popular")
 with col2_head:
     st.subheader("🎶 Overall feature Distribution Explorer")
 
-
+col1, col2, col3 = st.columns(3)
 # === HISTOGRAM COLUMN ===
 with col1:
     
@@ -108,7 +108,7 @@ with col3:
        'duration_ms']
     critdict={'violinplot':criteria2,'barplot':criteria}
     #st.subheader("📈 Correlation Heatmap")
-    st.subheader("📈 Features per album")
+    st.text("📈 Features per album")
     col1_left, col1_right = st.columns(2)
     with col1_left:
         selected_plt_type = st.selectbox(
