@@ -52,6 +52,7 @@ col1, col2 = st.columns(2)
 
 # === HISTOGRAM COLUMN ===
 with col1:
+    st.subheader("🎶 Taylor's most popular")
     fig0, ax0 = plt.subplots()#, sharex=True)#, sharey=True)
     temp_df=pd.DataFrame()
     temp_df['album']=df_album_summary['album'].astype(str)
@@ -61,29 +62,17 @@ with col1:
     temp_df['loudness']= abs(df_album_summary['loudness_min'])-abs(df_album_summary['loudness_max'])
     temp_df['popularity']= df_album_summary['mean_popularity']
 
-    selected_feature = st.selectbox(
+    selected_summary = st.selectbox(
         "Select a feature to visualize:",
         ('size', 'total_duration_ms', 'speechiness', 'loudness','popularity')
     )
 
-    temp_df = temp_df.sort_values(by=[selected_feature])
-    ax0.barh(temp_df['album'],temp_df[selected_feature])#, color = 'xkcd:sky blue')
+    temp_df = temp_df.sort_values(by=[selected_summary])
+    ax0.barh(temp_df['album'],temp_df[selected_summary])#, color = 'xkcd:sky blue')
     ax0.set_yticks(range(len(list(temp_df['album']))), temp_df['album'], fontsize=12)#, color = 'xkcd:steel');
     ax0.set_title('Taylor Swift albums with most f{selected_summary}')
     st.pyplot(fig0)
-    '''st.subheader("🎶 Overall feature Distribution Explorer")
-    # Dropdown like ipywidgets interact
-    selected_feature = st.selectbox(
-        "Select a feature to visualize:",
-        df.select_dtypes('number').columns
-    )
-    bins = st.slider("Number of bins:", min_value=5, max_value=100, value=30)
 
-    # Plot output
-    fig1, ax1 = plt.subplots(figsize=(6, 4))
-    sns.histplot(df[selected_feature], kde=True, bins = bins, color='mediumpurple', ax=ax1)
-    ax1.set_title(f"Distribution of {selected_feature} across all albums")
-    st.pyplot(fig1)'''
 
 
 # ===  CORRELATION COLUMN ===
