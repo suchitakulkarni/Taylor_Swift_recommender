@@ -83,7 +83,7 @@ with col2:
         ("barplot", "violinplot")
     )
     selected_feature = st.selectbox(
-        "Select a feature to visualize:", critdict.get(plottype)
+        "Select a feature to visualize:", critdict.get(selected_plt_type)
         )
     
     fig2, ax2 = plt.subplots(figsize=(6, 4))
