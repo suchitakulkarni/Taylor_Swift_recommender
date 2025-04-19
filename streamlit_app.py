@@ -48,8 +48,9 @@ st.title("🎵 Taylor Swift Discography analyzer and Music Recommender")
 st.write("Discover features of Taylor's discography and find similar songs from using audio features & KMeans clustering.")
 
 with st.expander("Dataset"):
-    st.write("Let's look at the data summary")
+    st.subheader("Original data from spotify, further cleanned to remove duplicates")
     st.dataframe(df_album_summary)
+    st.write(len(df_album_summary['album'].tolist()))
 
 # Divide page into two columns
 
