@@ -22,8 +22,8 @@ def draw_barplot(df, variable):
     temp_df['album'] = df['album'].astype(str)
     temp_df['size'] = df['size']
     temp_df['total_duration_ms'] = df['total_duration_ms']
-    temp_df['speechiness'] = abs(df['speechiness_min']-album_summary['speechiness_max'])
-    temp_df['loudness'] = abs(df['loudness_min'])-abs(album_summary['loudness_max'])
+    temp_df['speechiness'] = abs(df['speechiness_min']-df['speechiness_max'])
+    temp_df['loudness'] = abs(df['loudness_min'])-abs(df['loudness_max'])
     temp_df['popularity'] = df['mean_popularity']
     temp_df = temp_df.sort_values(by=variable, ascending=False)
     p=sns.barplot(data=temp_df, y='album', x=variable)#, palette="Blues")
