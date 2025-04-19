@@ -88,7 +88,7 @@ with col2:
     
     fig2, ax2 = plt.subplots(figsize=(6, 4))
     if selected_plt_type == 'barplot': draw_barplot(df_album_summary, selected_feature)
-    if selected_plt_type == 'violinplot': draw_violin(df_album_summary, selected_feature)
+    if selected_plt_type == 'violinplot': draw_violin(df, selected_feature)
     #sns.heatmap(df.select_dtypes('number').corr(), annot=True, cmap="coolwarm", ax=ax2)
     #ax2.set_title("Feature Correlations")
     st.pyplot(fig2)
