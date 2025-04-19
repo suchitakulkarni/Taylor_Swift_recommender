@@ -49,10 +49,16 @@ st.write("Discover features of Taylor's discography and find similar songs from 
 
 # Divide page into two columns
 col1, col2, col3 = st.columns(3)
+col1_head, col2_head = st.columns(2)
+with col1_head:
+    st.subheader("🎶 Taylor's most popular")
+with col2_head:
+    st.subheader("🎶 Overall feature Distribution Explorer")
+
 
 # === HISTOGRAM COLUMN ===
 with col1:
-    st.subheader("🎶 Taylor's most popular")
+    
     fig0, ax0 = plt.subplots()#, sharex=True)#, sharey=True)
     temp_df=pd.DataFrame()
     temp_df['album']=df_album_summary['album'].astype(str)
@@ -76,7 +82,6 @@ with col1:
 
 
 # ===  CORRELATION COLUMN ===
-st.subheader("🎶 Overall feature Distribution Explorer")
 with col2:
     col_left, col_right = st.columns(2)
     # Dropdown like ipywidgets interact
