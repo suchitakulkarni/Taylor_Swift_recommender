@@ -72,6 +72,7 @@ with col1:
 with col2:
     #st.subheader("📈 Correlation Heatmap")
     st.subheader("📈 Album summaries")
+    selected_plt_type = 'barplot'
     selected_plt_type = st.selectbox(
         "Select plot type for plot:",
         ("barplot", "violinplot")
