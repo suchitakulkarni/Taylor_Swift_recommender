@@ -53,7 +53,7 @@ col1, col2 = st.columns(2)
 # === HISTOGRAM COLUMN ===
 with col1:
 
-    st.subheader("🎶 Feature Distribution Explorer")
+    st.subheader("🎶 Overall feature Distribution Explorer")
     # Dropdown like ipywidgets interact
     selected_feature = st.selectbox(
         "Select a feature to visualize:",
@@ -76,7 +76,7 @@ with col2:
        'duration_ms']
     critdict={'violinplot':criteria2,'barplot':criteria}
     #st.subheader("📈 Correlation Heatmap")
-    st.subheader("📈 Album summaries")
+    st.subheader("📈 Features per album")
     selected_plt_type = 'barplot'
     selected_plt_type = st.selectbox(
         "Select plot type for plot:",
@@ -87,6 +87,8 @@ with col2:
         )
     
     fig2, ax2 = plt.subplots(figsize=(6, 4))
+    if selected_plt_type == 'barplot': draw_barplot(df_album_summary, selected_feature)
+    if selected_plt_type == 'violinplot': draw_violin(df_album_summary, selected_feature)
     #sns.heatmap(df.select_dtypes('number').corr(), annot=True, cmap="coolwarm", ax=ax2)
     #ax2.set_title("Feature Correlations")
     st.pyplot(fig2)
