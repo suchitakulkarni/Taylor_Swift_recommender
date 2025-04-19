@@ -106,16 +106,16 @@ with col2:
         "Select plot type for plot:",
         ("barplot", "violinplot")
     )
-    selected_feature = st.selectbox(
+    selected_feature_per_album = st.selectbox(
         "Select a feature to visualize:", critdict.get(selected_plt_type)
         )
     
     fig2, ax2 = plt.subplots(figsize=(5, 3))
-    if selected_plt_type == 'barplot': draw_barplot(df_album_summary, selected_feature)
-    if selected_plt_type == 'violinplot': draw_violin(df, selected_feature)
+    if selected_plt_type == 'barplot': draw_barplot(df_album_summary, selected_feature_per_album)
+    if selected_plt_type == 'violinplot': draw_violin(df, selected_feature_per_album)
     #sns.heatmap(df.select_dtypes('number').corr(), annot=True, cmap="coolwarm", ax=ax2)
     #ax2.set_title("Feature Correlations")
-    ax2.set_title(f"Distribution of {selected_feature} per album")
+    ax2.set_title(f"Distribution of {selected_feature_per_album} per album")
     st.pyplot(fig2)
 
 # Song selection
