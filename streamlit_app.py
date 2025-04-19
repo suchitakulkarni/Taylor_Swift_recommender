@@ -70,6 +70,23 @@ with col1:
 
 # ===  CORRELATION COLUMN ===
 with col2:
+
+
+    st.subheader("🎶 Overall feature Distribution Explorer")
+    # Dropdown like ipywidgets interact
+    selected_feature = st.selectbox(
+        "Select a feature to visualize:",
+        df.select_dtypes('number').columns
+    )
+    bins = st.slider("Number of bins:", min_value=5, max_value=100, value=30)
+
+    # Plot output
+    fig1, ax1 = plt.subplots(figsize=(6, 4))
+    sns.histplot(df[selected_feature], kde=True, bins = bins, color='mediumpurple', ax=ax1)
+    ax1.set_title(f"Distribution of {selected_feature} across all albums")
+    st.pyplot(fig1)
+    
+    
     criteria = ['size', 'total_duration_ms', 'speechiness', 'loudness','popularity']
     criteria2 = ['acousticness', 'danceability', 'energy', 'instrumentalness',
        'liveness', 'loudness', 'speechiness', 'tempo', 'valence', 'popularity',
@@ -143,7 +160,6 @@ for song in recommendations:
 st.subheader("🎧 Songs You Might Like:")
 #st.write(df.head())
 for i in range(len(suggestion_list)):
-#    st.write(f"**{row['name']} — Similarity: {row['similarity']:.2f}")
     st.write(f"**{suggestion_list[i][0]} from album ({suggestion_list[i][1]})")
     
     
