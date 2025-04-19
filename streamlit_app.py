@@ -79,12 +79,15 @@ with col1:
 with col2:
 
     st.subheader("🎶 Overall feature Distribution Explorer")
+    col_left, col_right = st.columns(2)
     # Dropdown like ipywidgets interact
-    selected_feature = st.selectbox(
-        "Select a feature to visualize:",
-        df.select_dtypes('number').columns, key = 1
-    )
-    bins = st.slider("Number of bins:", min_value=5, max_value=100, value=30)
+    with col_left:
+        selected_feature = st.selectbox(
+            "Select a feature to visualize:",
+            df.select_dtypes('number').columns, key = 1
+        )
+    with col_right:
+        bins = st.slider("Number of bins:", min_value=5, max_value=100, value=30)
 
     # Plot output
     fig1, ax1 = plt.subplots(figsize=(5, 3))
