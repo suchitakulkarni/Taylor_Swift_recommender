@@ -50,13 +50,14 @@ st.write("Discover features of Taylor's discography and find similar songs from 
 with st.expander("Dataset"):
     st.subheader("Original data from spotify, further cleanned to remove duplicates")
     st.dataframe(df_album_summary)
+    st.subheader("Dataset summary")
     st.write("Number of Albums analysed:", len(df['album'].unique().tolist()))
     st.write("Number of Songs analysed:", len(df['name'].tolist()))
     small_df = pd.DataFrame(columns = ['album', 'number of songs'])
     for i in range(len(df['album'].unique().tolist())):
         album = df['album'].unique().tolist()[i]
         small_df.loc[i] = [album, len(df[df['album'] == album]['name'].tolist())]
-    st.dataframe(small_df)
+    st.dataframe(small_df, width = 2)
     
     #for album in df['album'].unique().tolist():
     #    st.write("Number of songs per album:", album, len(df[df['album'] == album]['name'].tolist()))
