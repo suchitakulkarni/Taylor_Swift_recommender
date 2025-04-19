@@ -62,7 +62,7 @@ with col1:
     bins = st.slider("Number of bins:", min_value=5, max_value=100, value=30)
 
     # Plot output
-    fig1, ax1 = plt.subplots(figsize=(4, 4))
+    fig1, ax1 = plt.subplots(figsize=(2, 2))
     sns.histplot(df[selected_feature], kde=True, bins = bins, color='mediumpurple', ax=ax1)
     ax1.set_title(f"Distribution of {selected_feature}")
     st.pyplot(fig1)
