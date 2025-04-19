@@ -57,7 +57,7 @@ with st.expander("Dataset"):
     for i in range(len(df['album'].unique().tolist())):
         album = df['album'].unique().tolist()[i]
         small_df.loc[i] = [album, len(df[df['album'] == album]['name'].tolist())]
-    st.dataframe(small_df, width = 4)
+    st.dataframe(small_df, width = 100)
     
     #for album in df['album'].unique().tolist():
     #    st.write("Number of songs per album:", album, len(df[df['album'] == album]['name'].tolist()))
