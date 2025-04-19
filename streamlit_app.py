@@ -76,7 +76,7 @@ with col1:
     temp_df = temp_df.sort_values(by=[selected_summary])
     ax0.barh(temp_df['album'],temp_df[selected_summary])#, color = 'xkcd:sky blue')
     ax0.set_yticks(range(len(list(temp_df['album']))), temp_df['album'], fontsize=12)#, color = 'xkcd:steel');
-    ax0.set_title(f"Taylor Swift albums with most {selected_summary}")
+    ax0.set_title(f"Albums with most {selected_summary}")
     st.pyplot(fig0)
 
 
@@ -96,7 +96,7 @@ with col2:
     # Plot output
     fig1, ax1 = plt.subplots(figsize=(4, 2.4))
     sns.histplot(df[selected_feature], kde=True, bins = bins, color='mediumpurple', ax=ax1)
-    ax1.set_title(f"Distribution of {selected_feature} across all albums")
+    ax1.set_title(f"{selected_feature} across all albums")
     st.pyplot(fig1)
     
 with col3:
@@ -125,7 +125,7 @@ with col3:
     if selected_plt_type == 'violinplot': draw_violin(df, selected_feature_per_album)
     #sns.heatmap(df.select_dtypes('number').corr(), annot=True, cmap="coolwarm", ax=ax2)
     #ax2.set_title("Feature Correlations")
-    ax2.set_title(f"Distribution of {selected_feature_per_album} per album")
+    ax2.set_title(f"{selected_feature_per_album} per album")
     st.pyplot(fig2)
 
 # Song selection
