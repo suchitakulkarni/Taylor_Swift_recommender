@@ -44,15 +44,33 @@ def draw_violin(df, variable):
 df = load_data('songs.csv')
 df_album_summary = load_data('album_summary.csv')
 
-st.title("🎵 Taylor Swift Music Recommender")
-st.write("Discover similar songs from Taylor Swift's discography using audio features & KMeans clustering.")
+st.title("🎵 Taylor Swift Discography analyzer and Music Recommender")
+st.write("Discover features of Taylor's discography and find similar songs from using audio features & KMeans clustering.")
 
 # Divide page into two columns
 col1, col2 = st.columns(2)
 
 # === HISTOGRAM COLUMN ===
 with col1:
-    st.write('test column')
+    fig0, ax0 = plt.subplots()#, sharex=True)#, sharey=True)
+    temp_df=pd.DataFrame()
+    temp_df['album']=df_album_summary['album'].astype(str)
+    temp_df['size']=df_album_summary['size']
+    temp_df['total_duration_ms']=df_album_summary['total_duration_ms']
+    temp_df['speechiness']= abs(df_album_summary['speechiness_min']-df_album_summary['speechiness_max'])
+    temp_df['loudness']= abs(df_album_summary['loudness_min'])-abs(df_album_summary['loudness_max'])
+    temp_df['popularity']= df_album_summary['mean_popularity']
+
+    selected_feature = st.selectbox(
+        "Select a feature to visualize:",
+        ('size', 'total_duration_ms', 'speechiness', 'loudness','popularity')
+    )
+
+    temp_df = temp_df.sort_values(by=[selected_feature])
+    ax0.barh(temp_df['album'],temp_df[selected_feature])#, color = 'xkcd:sky blue')
+    ax0.set_yticks(range(len(list(temp_df['album']))), temp_df['album'], fontsize=12)#, color = 'xkcd:steel');
+    ax0.set_title('Taylor Swift albums with most f{selected_summary}')
+    st.pyplot(fig0)
     '''st.subheader("🎶 Overall feature Distribution Explorer")
     # Dropdown like ipywidgets interact
     selected_feature = st.selectbox(
@@ -80,7 +98,7 @@ with col2:
     bins = st.slider("Number of bins:", min_value=5, max_value=100, value=30)
 
     # Plot output
-    fig1, ax1 = plt.subplots(figsize=(6, 4))
+    fig1, ax1 = plt.subplots(figsize=(5, 3))
     sns.histplot(df[selected_feature], kde=True, bins = bins, color='mediumpurple', ax=ax1)
     ax1.set_title(f"Distribution of {selected_feature} across all albums")
     st.pyplot(fig1)
@@ -103,7 +121,7 @@ with col2:
         "Select a feature to visualize:", critdict.get(selected_plt_type)
         )
     
-    fig2, ax2 = plt.subplots(figsize=(6, 4))
+    fig2, ax2 = plt.subplots(figsize=(5, 3))
     if selected_plt_type == 'barplot': draw_barplot(df_album_summary, selected_feature)
     if selected_plt_type == 'violinplot': draw_violin(df, selected_feature)
     #sns.heatmap(df.select_dtypes('number').corr(), annot=True, cmap="coolwarm", ax=ax2)
@@ -163,5 +181,9 @@ for i in range(len(suggestion_list)):
     st.write(f"**{suggestion_list[i][0]} from album ({suggestion_list[i][1]})")
     
     
+
+
+
+
 
 
