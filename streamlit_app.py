@@ -31,7 +31,7 @@ def draw_barplot(df, variable):
     return 0
 
 def draw_violin(df, variable):
-    sns.set_theme(rc={'figure.figsize':(10,6)}, style = 'white')
+    sns.set_theme(rc={'figure.figsize':(5,3)}, style = 'white')
     filtered_df = df.sort_values(by=variable, ascending=False)
     p=sns.violinplot(data = filtered_df, y=variable, x='album', palette="Blues")#, palette=color_palette)
     p.set_xticks(p.get_xticks());
@@ -59,7 +59,7 @@ col1, col2, col3 = st.columns(3)
 # === HISTOGRAM COLUMN ===
 with col1:
     
-    fig0, ax0 = plt.subplots()#, sharex=True)#, sharey=True)
+    fig0, ax0 = plt.subplots(figsize = (5,3))#, sharex=True)#, sharey=True)
     temp_df=pd.DataFrame()
     temp_df['album']=df_album_summary['album'].astype(str)
     temp_df['size']=df_album_summary['size']
