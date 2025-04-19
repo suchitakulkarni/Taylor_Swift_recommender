@@ -64,7 +64,7 @@ with col1:
 
     selected_summary = st.selectbox(
         "Select a feature to visualize:",
-        ('size', 'total_duration_ms', 'speechiness', 'loudness','popularity')
+        ('size', 'total_duration_ms', 'speechiness', 'loudness','popularity'), key = 0
     )
 
     temp_df = temp_df.sort_values(by=[selected_summary])
@@ -82,7 +82,7 @@ with col2:
     # Dropdown like ipywidgets interact
     selected_feature = st.selectbox(
         "Select a feature to visualize:",
-        df.select_dtypes('number').columns
+        df.select_dtypes('number').columns, key = 1
     )
     bins = st.slider("Number of bins:", min_value=5, max_value=100, value=30)
 
@@ -103,10 +103,10 @@ with col2:
     st.subheader("📈 Features per album")
     selected_plt_type = st.selectbox(
         "Select plot type for plot:",
-        ("barplot", "violinplot")
+        ("barplot", "violinplot"), key = 2
     )
     selected_feature_per_album = st.selectbox(
-        "Select a feature to visualize:", critdict.get(selected_plt_type)
+        "Select a feature to visualize:", critdict.get(selected_plt_type), key = 3
         )
     
     fig2, ax2 = plt.subplots(figsize=(5, 3))
@@ -120,7 +120,7 @@ with col2:
 # Song selection
 st.subheader("Depending on your test, we can recommend you more of Taylor's songs")
 song_list = df['name']#.unique()
-selected_song = st.selectbox("Choose a Taylor Swift song:", sorted(song_list))
+selected_song = st.selectbox("Choose a Taylor Swift song:", sorted(song_list), key = 4)
 
 # Get features of the selected song
 selected_song_data = df[df['name'] == selected_song].iloc[0]
