@@ -76,9 +76,8 @@ with col1:
 
 
 # ===  CORRELATION COLUMN ===
+st.subheader("🎶 Overall feature Distribution Explorer")
 with col2:
-
-    st.subheader("🎶 Overall feature Distribution Explorer")
     col_left, col_right = st.columns(2)
     # Dropdown like ipywidgets interact
     with col_left:
