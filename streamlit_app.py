@@ -95,6 +95,7 @@ with col2:
     st.pyplot(fig2)
 
 # Song selection
+st.subheader("Depending on your test, we can recommend you more of Taylor's songs")
 song_list = df['name']#.unique()
 selected_song = st.selectbox("Choose a Taylor Swift song:", sorted(song_list))
 
