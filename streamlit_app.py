@@ -70,6 +70,11 @@ with col1:
 
 # ===  CORRELATION COLUMN ===
 with col2:
+    criteria = ['size', 'total_duration_ms', 'speechiness', 'loudness','popularity']
+    criteria2 = ['acousticness', 'danceability', 'energy', 'instrumentalness',
+       'liveness', 'loudness', 'speechiness', 'tempo', 'valence', 'popularity',
+       'duration_ms']
+    critdict={'violinplot':criteria2,'barplot':criteria}
     #st.subheader("📈 Correlation Heatmap")
     st.subheader("📈 Album summaries")
     selected_plt_type = 'barplot'
@@ -77,19 +82,9 @@ with col2:
         "Select plot type for plot:",
         ("barplot", "violinplot")
     )
-    if selected_plt_type: "barplot":
-        selected_feature = st.selectbox(
-            "Select a feature to visualize:",
-            ('size', 'total_duration_ms', 'speechiness', 'loudness','popularity')
+    selected_feature = st.selectbox(
+        "Select a feature to visualize:", critdict.get(plottype)
         )
-    if selected_plt_type: "violinplot":
-        selected_feature = st.selectbox(
-            "Select a feature to visualize:",
-            ('acousticness', 'danceability', 'energy', 'instrumentalness',
-       'liveness', 'loudness', 'speechiness', 'tempo', 'valence', 'popularity',
-       'duration_ms')
-        )
-
     
     fig2, ax2 = plt.subplots(figsize=(6, 4))
     #sns.heatmap(df.select_dtypes('number').corr(), annot=True, cmap="coolwarm", ax=ax2)
