@@ -72,16 +72,23 @@ with col1:
 with col2:
     #st.subheader("📈 Correlation Heatmap")
     st.subheader("📈 Album summaries")
-    selected_feature = st.selectbox(
-        "Select a feature to visualize:",
-        df_album_summary.select_dtypes('number').columns
-    )
-    selected_feature = st.selectbox(
+    selected_plt_type = st.selectbox(
         "Select plot type for plot:",
-        ('acousticness', 'danceability', 'energy', 'instrumentalness',
+        ("barplot", "violinplot")
+    )
+    if selected_plt_type: "barplot":
+        selected_feature = st.selectbox(
+            "Select a feature to visualize:",
+            ('size', 'total_duration_ms', 'speechiness', 'loudness','popularity')
+        )
+    if selected_plt_type: "violinplot":
+        selected_feature = st.selectbox(
+            "Select a feature to visualize:",
+            ('acousticness', 'danceability', 'energy', 'instrumentalness',
        'liveness', 'loudness', 'speechiness', 'tempo', 'valence', 'popularity',
        'duration_ms')
-    )
+        )
+
     
     fig2, ax2 = plt.subplots(figsize=(6, 4))
     #sns.heatmap(df.select_dtypes('number').corr(), annot=True, cmap="coolwarm", ax=ax2)
